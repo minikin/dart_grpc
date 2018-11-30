@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'generated/route_guide.pb.dart';
 
-const coordFactor = 1e7;
+const double coordFactor = 1e7;
 
 final List<Feature> featuresDb = _readDatabase();
 
