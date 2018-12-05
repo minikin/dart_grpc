@@ -11,7 +11,7 @@ class Client {
   ClientChannel channel;
   RouteGuideClient stub;
 
-  Future<Null> main(List<String> args) async {
+  Future<void> main(List<String> args) async {
     channel = ClientChannel('127.0.0.1',
         port: 8080,
         options:
@@ -27,7 +27,7 @@ class Client {
     } catch (e) {
       print('Caught error: $e');
     }
-    await channel.shutdown();
+    //await channel.shutdown();
   }
 
   void printFeature(Feature feature) {
@@ -42,7 +42,7 @@ class Client {
 
   /// Run the getFeature demo. Calls getFeature with a point known to have a
   /// feature and a point known not to have a feature.
-  Future<Null> runGetFeature() async {
+  Future<void> runGetFeature() async {
     final point1 = Point()
       ..latitude = 409146138
       ..longitude = -746188906;
@@ -57,7 +57,7 @@ class Client {
   /// Run the listFeatures demo. Calls listFeatures with a rectangle containing
   /// all of the features in the pre-generated database. Prints each response as
   /// it comes in.
-  Future<Null> runListFeatures() async {
+  Future<void> runListFeatures() async {
     final lo = Point()
       ..latitude = 400000000
       ..longitude = -750000000;
@@ -77,7 +77,7 @@ class Client {
   /// Run the recordRoute demo. Sends several randomly chosen points from the
   /// pre-generated feature database with a variable delay in between. Prints
   /// the statistics when they are sent from the server.
-  Future<Null> runRecordRoute() async {
+  Future<void> runRecordRoute() async {
     Stream<Point> generateRoute(int count) async* {
       final random = Random();
 
@@ -99,7 +99,7 @@ class Client {
 
   /// Run the routeChat demo. Send some chat messages, and print any chat
   /// messages that are sent from the server.
-  Future<Null> runRouteChat() async {
+  Future<void> runRouteChat() async {
     RouteNote createNote(String message, int latitude, int longitude) {
       final location = Point()
         ..latitude = latitude
